@@ -13,8 +13,14 @@ public class PlayerFollower : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        gameObject.transform.position = new Vector3(0,
-            target.transform.position.y,
-            target.transform.position.z - followDistance);
+        var targetYPosition = target.transform.position.y;
+        var currentYPosition = gameObject.transform.position.y;
+        var lerpedYPosition = Mathf.Lerp(currentYPosition, targetYPosition, 0.2f * Time.deltaTime);
+
+        gameObject.transform.position = new Vector3(
+            target.transform.position.x,
+            lerpedYPosition,
+            target.transform.position.z - 10
+            );
     }
 }

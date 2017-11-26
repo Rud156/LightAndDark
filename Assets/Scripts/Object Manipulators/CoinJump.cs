@@ -3,15 +3,15 @@
 public class CoinJump : MonoBehaviour
 {
     public float jumpVelocity = 10f;
+    public string objectTag;
 
     private Rigidbody target;
-    private bool oneTouched;
 
     // Use this for initialization
     private void Start()
     {
         target = gameObject.GetComponent<Rigidbody>();
-        oneTouched = false;
+        target.velocity = Vector3.up * jumpVelocity;
     }
 
     // Update is called once per frame
@@ -21,16 +21,7 @@ public class CoinJump : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // TODO: Check the function after making a character
-        // TODO: The Better Jump Function Created Is Also Required
-        if (oneTouched)
+        if (other.CompareTag(objectTag))
             Destroy(gameObject);
-
-        Rigidbody otherTarget = other.GetComponent<Rigidbody>();
-        if (!otherTarget || !other.CompareTag("Player"))
-            return;
-
-        oneTouched = true;
-        target.velocity = Vector3.up * jumpVelocity;
     }
 }

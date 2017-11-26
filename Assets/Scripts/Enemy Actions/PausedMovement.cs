@@ -1,99 +1,116 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PausedMovement : MonoBehaviour
 {
-    public float movementSpeed;
-    public float pauseTime;
-    public ParticleSystem particles;
-    public bool playParticlesAtEnd;
-    public Vector3 startPoint;
-    public Vector3 endPoint;
-
     public enum Direction
     {
         yAxis,
         zAxis
-    }
+    };
 
     public Direction direction;
+    public float movementSpeed = 100;
+    public float maxDirection = 5;
+    public float pauseTime = 3;
+    public bool playOnPositive = true;
 
+    public ParticleSystem particles;
+
+    private Rigidbody rigidBody;
+    private Vector3 centerPosition;
     private Transform objectPosition;
-    private bool stopMoving;
-    private bool functionInvoked;
-    private bool moveForward;
 
-    // Use this for initialization
+    private bool velocitySet = false;
+    private bool startForward = false;
+    private bool enumatorRun = false;
+
     private void Start()
     {
         objectPosition = gameObject.transform;
-        stopMoving = false;
-        functionInvoked = false;
-        objectPosition.position = startPoint;
-        moveForward = true;
+        centerPosition = gameObject.transform.position;
+        rigidBody = gameObject.GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     private void FixedUpdate()
     {
-        switch (direction)
+        if (direction == Direction.yAxis)
         {
-            case Direction.yAxis:
-                if (!stopMoving)
-                {
-                    if (moveForward)
-                        objectPosition.Translate(Vector3.up * movementSpeed * Time.deltaTime);
-                    else
-                        objectPosition.Translate(Vector3.down * movementSpeed * Time.deltaTime);
-                }
+            if (!velocitySet)
+            {
+                var xVelocity = rigidBody.velocity.x;
+                var zVelocity = rigidBody.velocity.z;
 
-                if ((objectPosition.position.y > endPoint.y || objectPosition.position.y < startPoint.y) &&
-                    !functionInvoked)
-                {
-                    stopMoving = true;
-                    functionInvoked = true;
-                    Invoke("ToggleMovement", pauseTime);
+                if (startForward)
+                    rigidBody.velocity = new Vector3(xVelocity, 1, zVelocity) * movementSpeed * Time.deltaTime;
+                else
+                    rigidBody.velocity = new Vector3(xVelocity, -1, zVelocity) * movementSpeed * Time.deltaTime;
 
-                    if (playParticlesAtEnd && objectPosition.position.y > endPoint.y)
-                        particles.Play();
-                    else if (!playParticlesAtEnd && objectPosition.position.y < startPoint.y)
-                        particles.Play();
-                }
+                velocitySet = true;
+            }
 
-                break;
+            if (objectPosition.position.y >= centerPosition.y + maxDirection)
+                SetDirectionPositive();
+            else if (objectPosition.position.y <= centerPosition.y - maxDirection)
+                SetDirectionNegative();
+        }
+        else
+        {
+            if (!velocitySet)
+            {
+                var xVelocity = rigidBody.velocity.x;
+                var yVelocity = rigidBody.velocity.y;
 
-            case Direction.zAxis:
-                if (!stopMoving)
-                {
-                    if (moveForward)
-                        objectPosition.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
-                    else
-                        objectPosition.Translate(Vector3.back * movementSpeed * Time.deltaTime);
-                }
+                if (startForward)
+                    rigidBody.velocity = new Vector3(xVelocity, yVelocity, 1) * movementSpeed * Time.deltaTime;
+                else
+                    rigidBody.velocity = new Vector3(xVelocity, yVelocity, -1) * movementSpeed * Time.deltaTime;
 
-                if ((objectPosition.position.z > endPoint.z || objectPosition.position.z < startPoint.z) &&
-                    !functionInvoked)
-                {
-                    stopMoving = true;
-                    functionInvoked = true;
-                    Invoke("ToggleMovement", pauseTime);
+                velocitySet = true;
+            }
 
-                    if (playParticlesAtEnd && objectPosition.position.z > endPoint.z)
-                        particles.Play();
-                    else if (!playParticlesAtEnd && objectPosition.position.z < startPoint.z)
-                        particles.Play();
-                }
-                break;
-
-            default:
-                break;
+            if (objectPosition.position.z >= centerPosition.z + maxDirection)
+                SetDirectionPositive();
+            else if (objectPosition.position.z <= centerPosition.z - maxDirection)
+                SetDirectionNegative();
         }
     }
 
-    private void ToggleMovement()
+    private void SetDirectionPositive()
     {
-        stopMoving = false;
-        functionInvoked = false;
-        moveForward = !moveForward;
-        particles.Stop();
+        startForward = false;
+        if (playOnPositive && !enumatorRun)
+            StartCoroutine(PlayParticleSystem());
+        else
+        {
+            velocitySet = false;
+            enumatorRun = false;
+        }
+    }
+
+    private void SetDirectionNegative()
+    {
+        startForward = true;
+        if (!playOnPositive && !enumatorRun)
+            StartCoroutine(PlayParticleSystem());
+        else
+        {
+            velocitySet = false;
+            enumatorRun = false;
+        }
+    }
+
+    private IEnumerator PlayParticleSystem()
+    {
+        rigidBody.velocity = Vector3.zero;
+
+        if (!particles.isPlaying)
+            particles.Play();
+        yield return new WaitForSeconds(pauseTime);
+        if (particles.isPlaying)
+            particles.Stop();
+
+        velocitySet = false;
+        enumatorRun = true;
     }
 }
