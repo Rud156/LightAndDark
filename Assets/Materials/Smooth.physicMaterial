@@ -5,9 +5,9 @@ PhysicMaterial:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: TestPhysicsMaterial
-  dynamicFriction: 0.3
-  staticFriction: 0.3
-  bounciness: 0.7
-  frictionCombine: 3
-  bounceCombine: 3
+  m_Name: Smooth
+  dynamicFriction: 0.05
+  staticFriction: 0.05
+  bounciness: 0
+  frictionCombine: 1
+  bounceCombine: 1

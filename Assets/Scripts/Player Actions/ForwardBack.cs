@@ -2,20 +2,22 @@
 
 public class ForwardBack : MonoBehaviour
 {
-    public float playerMoveSpeed = 50;
+	public float playerMoveSpeed = 50;
 
-    private Rigidbody target;
+	private Rigidbody target;
 
-    // Use this for initialization
-    private void Start()
-    {
-        target = gameObject.GetComponent<Rigidbody>();
-    }
+	// Use this for initialization
+	private void Start ()
+	{
+		target = gameObject.GetComponent<Rigidbody> ();
+	}
 
-    // Update is called once per frame
-    private void FixedUpdate()
-    {
-        var moveZ = Input.GetAxis("Vertical") * playerMoveSpeed * Time.deltaTime;
-        target.velocity += new Vector3(0, 0, moveZ);
-    }
+	private void FixedUpdate ()
+	{
+		var moveZ = Input.GetAxis ("Vertical") * playerMoveSpeed * Time.deltaTime;
+		var xVelocity = target.velocity.x;
+		var yVelocity = target.velocity.y;
+
+		target.velocity = new Vector3 (xVelocity, yVelocity, moveZ);
+	}
 }

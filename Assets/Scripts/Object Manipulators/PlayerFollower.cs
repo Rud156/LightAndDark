@@ -2,25 +2,24 @@
 
 public class PlayerFollower : MonoBehaviour
 {
-    public GameObject target;
-    public float followDistance = 10;
+	public GameObject target;
+	public float followXDistance = -1.75f;
+	public float followZDistance = 0.5f;
+	public float followHeight = 1;
 
-    // Use this for initialization
-    private void Start()
-    {
-    }
+	[Range (0, 1)]
+	public float lerpSpeed = 0.9f;
 
-    // Update is called once per frame
-    private void FixedUpdate()
-    {
-        var targetYPosition = target.transform.position.y;
-        var currentYPosition = gameObject.transform.position.y;
-        var lerpedYPosition = Mathf.Lerp(currentYPosition, targetYPosition, 0.2f * Time.deltaTime);
+	private void FixedUpdate ()
+	{
+		var targetYPosition = target.transform.position.y + followHeight;
+		var currentYPosition = gameObject.transform.position.y;
+		var lerpedYPosition = Mathf.Lerp (currentYPosition, targetYPosition, 0.9f * Time.deltaTime);
 
-        gameObject.transform.position = new Vector3(
-            target.transform.position.x,
-            lerpedYPosition,
-            target.transform.position.z - 10
-            );
-    }
+		gameObject.transform.position = new Vector3 (
+			target.transform.position.x + followXDistance,
+			lerpedYPosition,
+			target.transform.position.z + followZDistance - 1
+		);
+	}
 }
