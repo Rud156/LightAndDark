@@ -21,7 +21,7 @@ public class Jump : MonoBehaviour
 		RaycastHit hit;
 		Ray downRay = new Ray (gameObject.transform.position, -Vector3.up);
 		if (Physics.Raycast (downRay, out hit)) {
-			if (hit.distance <= hitDistance && Input.GetKeyDown (KeyCode.Space)) {
+			if (hit.distance <= hitDistance && Input.GetKeyDown (KeyCode.UpArrow)) {
 				var zVelocity = target.velocity.z;
 				target.velocity = new Vector3 (0, jumpVelocity, zVelocity);
 			}

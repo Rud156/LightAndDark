@@ -123,13 +123,14 @@ GameObject:
   - component: {fileID: 554258533}
   - component: {fileID: 554258532}
   - component: {fileID: 554258531}
+  - component: {fileID: 554258535}
   - component: {fileID: 554258530}
   - component: {fileID: 554258529}
   - component: {fileID: 554258528}
-  - component: {fileID: 554258535}
-  m_Layer: 0
+  - component: {fileID: 554258536}
+  m_Layer: 10
   m_Name: TestPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b56a7610ed76954ab67d856e17853e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpVelocity: 5
+  jumpVelocity: 10
   hitDistance: 0.7
 --- !u!114 &554258530
 MonoBehaviour:
@@ -253,6 +254,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 114
   m_CollisionDetection: 0
+--- !u!114 &554258536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 554258527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc552879b7cf1442a5c8681e1f537eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireballBullet: {fileID: 1362055589782786, guid: c2c14dabd7b297b4892ac7e3fce7fd6e,
+    type: 2}
+  zVelocity: 10
+  yVelocity: 1
+  breathingSpace: 0.3
 --- !u!1 &694107268
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +332,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -323,7 +340,7 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 0
+  m_HDR: 1
   m_AllowMSAA: 1
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -335,13 +352,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 694107268}
-  m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.16042997, y: 0.37686962, z: -0.066452265, w: 0.9098438}
+  m_LocalPosition: {x: -1.75, y: 2, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 20, y: 45, z: 0}
 --- !u!114 &694107274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,9 +371,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 554258527}
-  followXDistance: -1.75
-  followZDistance: 0.5
-  followHeight: 1
+  followXDistance: -2
+  followZDistance: -2.5
+  followHeight: 2.5
   lerpSpeed: 0.95
 --- !u!1 &1569516743
 GameObject:
@@ -456,11 +473,11 @@ MonoBehaviour:
   - {fileID: 1056155900543490, guid: f398b415523675b4ab1e6358b2f0b275, type: 2}
   - {fileID: 1318792739393538, guid: 67223220b8c3a474ba022b33ce646cf9, type: 2}
   slopes:
-  - {fileID: 1969123563349806, guid: 8dded9f80c5961a40bbc46e5a4fba8b0, type: 2}
-  - {fileID: 1404247589022954, guid: 9a55504f3f82d6d4fa6fde27d3a3819a, type: 2}
+  - {fileID: 1183598953224770, guid: a778c395e3ce99541a5e1e443d05912f, type: 2}
   emptySpaces:
   - {fileID: 1961557099824030, guid: bdd36fc94fd65fd46a09053e0452cb1d, type: 2}
   - {fileID: 1876685083889022, guid: 39390643705681747911cb583e4baab0, type: 2}
+  - {fileID: 1183598953224770, guid: a778c395e3ce99541a5e1e443d05912f, type: 2}
   enemyGrounds:
   - {fileID: 1961189228269508, guid: 2832b7762980a2149a0b35385e61a7fc, type: 2}
 --- !u!4 &2050743693

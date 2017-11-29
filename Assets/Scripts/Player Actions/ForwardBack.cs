@@ -14,7 +14,7 @@ public class ForwardBack : MonoBehaviour
 
 	private void FixedUpdate ()
 	{
-		var moveZ = Input.GetAxis ("Vertical") * playerMoveSpeed * Time.deltaTime;
+		var moveZ = -Input.GetAxis ("Horizontal") * playerMoveSpeed * Time.deltaTime;
 		var xVelocity = target.velocity.x;
 		var yVelocity = target.velocity.y;
 

@@ -2,30 +2,34 @@
 
 public class DestroyAtSpeed : MonoBehaviour
 {
-    public float minSpeed = 2;
-    public float destoryAfterTime = 2f;
+	public float minSpeed = 2;
+	public float speedReductionAmount = 0.1f;
 
-    private Rigidbody target;
-    private bool destroyed;
+	private Rigidbody target;
+	private bool layerSet = false;
 
-    // Use this for initialization
-    private void Start()
-    {
-        target = gameObject.GetComponent<Rigidbody>();
-        destroyed = false;
-    }
+	// Use this for initialization
+	private void Start ()
+	{
+		target = gameObject.GetComponent<Rigidbody> ();
+	}
 
-    // Update is called once per frame
-    private void FixedUpdate()
-    {
-        if(!destroyed)
-        {
-            var speed = Mathf.Sqrt(Mathf.Pow(target.velocity.x, 2) + Mathf.Pow(target.velocity.y, 2));
-            if(speed <= minSpeed)
-            {
-                destroyed = true;
-                Destroy(gameObject, destoryAfterTime);
-            }
-        }
-    }
+	// Update is called once per frame
+	private void FixedUpdate ()
+	{
+		var speed = target.velocity.z;
+		if (speed <= minSpeed)
+			Destroy (gameObject);
+
+		if (layerSet)
+			target.velocity -= Vector3.forward * speedReductionAmount;
+	}
+
+	private void OnCollisionEnter (Collision collision)
+	{
+		if (!layerSet) {
+			gameObject.layer = 8;
+			layerSet = true;
+		}
+	}
 }

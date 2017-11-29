@@ -34,16 +34,16 @@ public class GroundCreator : MonoBehaviour
                 prevGround.transform.Find (endPointName).position;
 
 			if (randomValue < 0.3) {
-				int randomGround = Mathf.FloorToInt (Random.value * (emptySpaces.Length - 1));
+				int randomGround = Mathf.FloorToInt (Random.value * (emptySpaces.Length));
 				ground = Instantiate (emptySpaces [randomGround], position, Quaternion.identity) as GameObject;
 			} else if (randomValue < 0.5) {
-				int randomGround = Mathf.FloorToInt (Random.value * (slopes.Length - 1));
+				int randomGround = Mathf.FloorToInt (Random.value * (slopes.Length));
 				ground = Instantiate (slopes [randomGround], position, Quaternion.identity) as GameObject;
 			} else if (randomValue < 0.7) {
-				int randomGround = Mathf.FloorToInt (Random.value * (flatGrounds.Length - 1));
+				int randomGround = Mathf.FloorToInt (Random.value * (flatGrounds.Length));
 				ground = Instantiate (flatGrounds [randomGround], position, Quaternion.identity) as GameObject;
 			} else {
-				int randomGround = Mathf.FloorToInt (Random.value * (enemyGrounds.Length - 1));
+				int randomGround = Mathf.FloorToInt (Random.value * (enemyGrounds.Length));
 				ground = Instantiate (enemyGrounds [randomGround], position, Quaternion.identity) as GameObject;
 			}
 

@@ -7,6 +7,10 @@ TagManager:
   - Collectibles
   - Enemies
   - Breakable
+  - CollectibleInit
+  - PowerUps
+  - PlayerBullets
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -16,10 +20,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - ToBeDestroyed
+  - Ground
+  - Player
+  - Items
   - 
   - 
   - 
