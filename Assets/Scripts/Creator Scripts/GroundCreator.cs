@@ -6,6 +6,7 @@ public class GroundCreator : MonoBehaviour
 	[Range (7, 50)]
 	public int totalGrounds = 30;
 	public string endPointName = "AttachEndPoint";
+	public string enemyPointName = "EnemyPoint";
 
 	public GameObject[] flatGrounds;
 	public GameObject[] slopes;
@@ -13,6 +14,7 @@ public class GroundCreator : MonoBehaviour
 	public GameObject[] enemyGrounds;
 
 	private List<GameObject> createdGrounds;
+	private List<Vector3> enemyPoints;
 	private GameObject prevGround;
 
 	// Use this for initialization
@@ -20,6 +22,7 @@ public class GroundCreator : MonoBehaviour
 	{
 		prevGround = null;
 		createdGrounds = new List<GameObject> ();
+		enemyPoints = new List<Vector3> ();
 		CreateGrounds ();
 
 		Store.setCheckPoint (new Vector3 (0, 3, 1));
@@ -47,8 +50,14 @@ public class GroundCreator : MonoBehaviour
 				ground = Instantiate (enemyGrounds [randomGround], position, Quaternion.identity) as GameObject;
 			}
 
+			Transform enemyPoint = ground.transform.Find (enemyPointName);
+			if (enemyPoint != null)
+				enemyPoints.Add (enemyPoint.position);
+
 			prevGround = ground;
 			createdGrounds.Add (ground);
 		}
+
+		gameObject.GetComponent <EnemyCreator> ().CreateEnemies (enemyPoints);
 	}
 }

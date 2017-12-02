@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 554258529}
   - component: {fileID: 554258528}
   - component: {fileID: 554258536}
+  - component: {fileID: 554258537}
   m_Layer: 10
   m_Name: TestPlayer
   m_TagString: Player
@@ -270,6 +271,19 @@ MonoBehaviour:
   zVelocity: 10
   yVelocity: 1
   breathingSpace: 0.3
+--- !u!114 &554258537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 554258527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb137f4a7d0a9d4ba9f422c957b5220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 1100840788279414, guid: 1706fd57e76b32845a758c771727c285, type: 2}
+  enemyTagName: Enemies
 --- !u!1 &694107268
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,6 +463,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2050743693}
   - component: {fileID: 2050743689}
+  - component: {fileID: 2050743690}
   m_Layer: 0
   m_Name: TestMainCreator
   m_TagString: Untagged
@@ -469,6 +484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalGrounds: 30
   endPointName: AttachEndPoint
+  enemyPointName: EnemyPoint
   flatGrounds:
   - {fileID: 1056155900543490, guid: f398b415523675b4ab1e6358b2f0b275, type: 2}
   - {fileID: 1318792739393538, guid: 67223220b8c3a474ba022b33ce646cf9, type: 2}
@@ -480,6 +496,19 @@ MonoBehaviour:
   - {fileID: 1183598953224770, guid: a778c395e3ce99541a5e1e443d05912f, type: 2}
   enemyGrounds:
   - {fileID: 1961189228269508, guid: 2832b7762980a2149a0b35385e61a7fc, type: 2}
+--- !u!114 &2050743690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2050743688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42b73a6902d59064aa550d67a3315cd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 1546938899473996, guid: 263a92f7413de24439bc9b3b7e06d5ee, type: 2}
 --- !u!4 &2050743693
 Transform:
   m_ObjectHideFlags: 0
