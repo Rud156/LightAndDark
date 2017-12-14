@@ -12,6 +12,8 @@ TagManager:
   - PlayerBullets
   - Ground
   - TurnPoints
+  - LightGround
+  - DarkGround
   layers:
   - Default
   - TransparentFX
@@ -26,9 +28,9 @@ TagManager:
   - Player
   - Items
   - Enemy
-  - 
-  - 
-  - 
+  - LightGround
+  - DarkGround
+  - TurnPoints
   - 
   - 
   - 

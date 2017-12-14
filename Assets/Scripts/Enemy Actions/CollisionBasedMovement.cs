@@ -29,7 +29,7 @@ public class CollisionBasedMovement : MonoBehaviour
 	{
 		if (!other.CompareTag (colliderTagName))
 			return;
-
+		
 		moveForward = !moveForward;
 	}
 }
