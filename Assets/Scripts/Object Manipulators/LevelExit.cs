@@ -27,7 +27,7 @@ public class LevelExit : MonoBehaviour {
         if (!target || !other.CompareTag("Player"))
             return;
 
-        int totalEnemies = other.GetComponent<DestroyEnemy>().destroyedEnemyCount;
+        int totalEnemies = other.GetComponent<Store>().GetEnemyCount();
         other.GetComponent<ForwardBack>().enabled = false;
         other.GetComponent<Jump>().enabled = false;
         other.GetComponent<ChangeMaterial>().enabled = false;

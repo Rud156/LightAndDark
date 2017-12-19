@@ -11,6 +11,8 @@ public class LoadNextLevel : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        LevelDataStore.playerBuffActive = false;
+
         PlayerPrefs.SetInt("MaxLevel", LevelDataStore.maxLevel);
         PlayerPrefs.SetInt("MaxEnemies", LevelDataStore.maxEnemiesKilled);
 
@@ -28,7 +30,7 @@ public class LoadNextLevel : MonoBehaviour {
     }
 
     IEnumerator LoadNewScene(int sceneNumber) {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         AsyncOperation async = SceneManager.LoadSceneAsync(sceneNumber);
         while (!async.isDone)
             yield return null;

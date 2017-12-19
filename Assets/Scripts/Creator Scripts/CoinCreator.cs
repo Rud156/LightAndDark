@@ -39,12 +39,11 @@ public class CoinCreator : MonoBehaviour {
             flickr.SetColors(startColor, endColor);
         } else {
             flickr.enabled = false;
+            gameObject.SetActive(false);
         }
     }
 
     void OnTriggerEnter(Collider other) {
-        if (!willGenerate)
-            return;
 
         Rigidbody target = other.GetComponent <Rigidbody>();
         if (!target || !other.CompareTag("Player")) {

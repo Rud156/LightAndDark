@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: c340a35e55acef1439d3d6025c321163
+timeCreated: 1513649439
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - lightMaterial: {fileID: 2100000, guid: e8ed439775abf2845b51a533ee9d72ab, type: 2}
+  - darkMaterial: {fileID: 2100000, guid: 1464a746ac4bc24438c8e514a8b28cb6, type: 2}
+  - meteor: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

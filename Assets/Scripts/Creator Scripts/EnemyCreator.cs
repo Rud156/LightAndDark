@@ -15,7 +15,7 @@ public class EnemyCreator : MonoBehaviour {
     private List<GameObject> createdEnemies;
 
     public void CreateEnemies(List<Vector3> enemyPoints) {
-        enemyProbability = Mathf.Clamp01(LevelDataStore.currentLevel / 15);
+        enemyProbability = Mathf.Clamp01(LevelDataStore.currentLevel / 20);
         enemyProbability = enemyProbability < minEnemyProbability ? minEnemyProbability : enemyProbability;
         createdEnemies = new List<GameObject>();
 

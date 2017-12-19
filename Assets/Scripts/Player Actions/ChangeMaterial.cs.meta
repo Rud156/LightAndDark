@@ -1,11 +1,15 @@
 fileFormatVersion: 2
 guid: 2f467dd700515364fa6ceec87218fa16
-timeCreated: 1512833618
+timeCreated: 1513310093
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - lightMaterial: {fileID: 2100000, guid: e8ed439775abf2845b51a533ee9d72ab, type: 2}
+  - darkMaterial: {fileID: 2100000, guid: 1464a746ac4bc24438c8e514a8b28cb6, type: 2}
+  - mainCamera: {instanceID: 0}
+  - directionalLight: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

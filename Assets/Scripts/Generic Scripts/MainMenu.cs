@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour {
     void Start() {
         LevelDataStore.maxLevel = PlayerPrefs.GetInt("MaxLevel");
         LevelDataStore.maxEnemiesKilled = PlayerPrefs.GetInt("MaxEnemies");
-        textContent.SetText("Highest Level: {0} \n\n\nMax Enemies Killed: {1}", 
+        textContent.SetText("Highest Level Achieved: {0} \n\n\nMaximum Enemies Killed: {1}", 
             LevelDataStore.maxLevel, LevelDataStore.maxEnemiesKilled);
     }
 
