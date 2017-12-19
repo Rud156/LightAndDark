@@ -1,3 +1,3 @@
-# MarioTypeGame
+# Light And Dark
 ### A work in progress
-> A simple game based on the concepts of Mario.
+> A simple game based on the concepts of change colors.
