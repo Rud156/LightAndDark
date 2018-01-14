@@ -54,6 +54,18 @@ public class Store : MonoBehaviour {
 
     void Update() {
 
+        float fillAmount = healthBar.fillAmount;
+        if(fillAmount <= 0.5)
+        {
+            Color color = Color.Lerp(Color.red, Color.yellow, fillAmount);
+            healthBar.color = color;
+        }
+        else
+        {
+            Color color = Color.Lerp(Color.yellow, Color.green, fillAmount);
+            healthBar.color = color;
+        }
+
         if (gameObject.transform.position.z >= midPoint && !meteorShowerSpawned && meteorShower) {
             meteorShowerSpawned = true;
             GameObject meteors = Instantiate(
